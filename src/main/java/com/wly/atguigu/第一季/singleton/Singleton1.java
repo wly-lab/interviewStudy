@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.singleton;
+package com.wly.atguigu.第一季.singleton;
 /**
  * 单例模式要点：
  * 1.某个类只能有一个实例
@@ -9,21 +9,16 @@ package com.wly.atguigu.first.singleton;
  *     对外提供获取该实例对象的方法 --直接暴露、静态get
  */
 
-//懒汉式 有线程安全问题
-public class Singleton4 {
+//饿汉式
+public class Singleton1 {
     /**
      * 1.构造器私有化
      * 2.自行创建 ，并且用静态变量保存
-     * 3.向外提供方法获取这个实例
+     * 3.向外提供这个实例
      */
-    private static  Singleton4 instance;
-    private Singleton4(){
+    public static final   Singleton1 INSTANCE=new Singleton1();
+    private  Singleton1(){
 
     }
-    public static Singleton4 getInstance(){
-        if (instance==null){
-            instance=new Singleton4();
-        }
-        return instance;
-    }
+
 }

@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.singleton;
+package com.wly.atguigu.第一季.singleton;
 
 import java.io.IOException;
 import java.util.Properties;

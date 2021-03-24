@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.singleton;
+package com.wly.atguigu.第一季.singleton;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

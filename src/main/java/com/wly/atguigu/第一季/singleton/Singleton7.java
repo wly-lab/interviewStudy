@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.singleton;
+package com.wly.atguigu.第一季.singleton;
 /**
  * 单例模式要点：
  * 1.某个类只能有一个实例

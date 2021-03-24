@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.类初始化和实例初始化;
+package com.wly.atguigu.第一季.类初始化和实例初始化;
 
 
 /**

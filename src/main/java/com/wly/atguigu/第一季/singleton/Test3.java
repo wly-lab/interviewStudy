@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.singleton;
+package com.wly.atguigu.第一季.singleton;
 
 public class Test3 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.wly.atguigu.first.singleton;
+package com.wly.atguigu.第一季.singleton;
 
 /**
  * 枚举类型：表示该类型的对象时有限的几个
