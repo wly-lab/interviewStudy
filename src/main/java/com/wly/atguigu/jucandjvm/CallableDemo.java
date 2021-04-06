@@ -14,7 +14,9 @@ class MyThread implements Callable<Integer> {
 }
 
 /**
- *
+ *多线程中，第3种获得多线程的方式
+ * 1 get 方法一般放到最后
+ * 2 一个futuretask 对象只能被使用一次
  */
 public class CallableDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
