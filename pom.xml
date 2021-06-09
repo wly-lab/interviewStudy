@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>rabbitmq</module>
+        <module>rabbitmq-java</module>
     </modules>
 
     <name>studyself</name>
