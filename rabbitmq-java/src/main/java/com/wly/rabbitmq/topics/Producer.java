@@ -1,4 +1,4 @@
-package com.wly.rabbitmq.all;
+package com.wly.rabbitmq.topics;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -29,36 +29,17 @@ public class Producer {
             //3.通过连接获取通道channel
              channel = connection.createChannel();
             //4.通过连接创建交换机  声明队列 丙丁关系 路由key 发送消息和接收消息
-            String queueName="queue1";
 
             //5.准备消息内容
-            String message="hello wly!";
+            String message="hello direct!";
             //6.准备交换机
-            String exchangeName="direct-exchange2";
-
+            String exchangeName="topic-exchange";
+            //7.定义路由key
+            String roteKey="com.order.test.xxx";
             //8.指定交换机类型
-            String type="direct";
-            //声明交换机 持久化是指交换机会不会随着服务器重启造成丢失 true表示不丢失
-            channel.exchangeDeclare(exchangeName,type,true);
-            //声明队列
-            /**
-             * param1 队列的名称
-             * param2 是否要持久化  false非持久化 非持久化队列消息会存盘吗？会 但是会随着服务器重启丢失
-             * param3 排他性  是否独占
-             * param4 是否自动删除  随着最后一个消费者消费完毕消息以后是否把队列自动删除
-             * param5 携带附属参数
-             *
-             */
-            channel.queueDeclare("queue5",false,false,false,null);
-            channel.queueDeclare("queue6",false,false,false,null);
-            channel.queueDeclare("queue7",false,false,false,null);
-
-            //绑定队列和交换机
-            channel.queueBind("queue5",exchangeName,"order");
-            channel.queueBind("queue6",exchangeName,"order");
-            channel.queueBind("queue7",exchangeName,"course");
+            String type="topic";
             //6.发送消息给队列queue
-            channel.basicPublish(exchangeName,"order",null,message.getBytes());
+            channel.basicPublish(exchangeName,roteKey,null,message.getBytes());
             System.out.println("消息发送成功");
         }catch (Exception e){
             e.printStackTrace();

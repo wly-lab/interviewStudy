@@ -1,14 +1,16 @@
-package com.wly.rabbitmq.routing;
+package com.wly.rabbitmq.work.lunxun;
 
+import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.Delivery;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class Producer {
-
+public class Work1 {
     public static void main(String[] args) {
         //所有中间件技术都是基于tcp/ip协议基础上构建新型的协议规范，只不过rabbitmq遵循的是amqp
         //ip port
@@ -24,31 +26,27 @@ public class Producer {
         Connection connection=null;
         Channel channel=null;
         try{
-            //2.创建连接connection rabbitmq为什么事基于channel去处理而不是基于连接？ 连接是短连接
-             connection = connectionFactory.newConnection("生产者");
+            //2.创建连接connection
+            connection = connectionFactory.newConnection("work1");
             //3.通过连接获取通道channel
-             channel = connection.createChannel();
+            channel = connection.createChannel();
             //4.通过连接创建交换机  声明队列 丙丁关系 路由key 发送消息和接收消息
-            String queueName="queue1";
-            /**
-             * param1 队列的名称
-             * param2 是否要持久化  false非持久化 非持久化队列消息会存盘吗？会 但是会随着服务器重启丢失
-             * param3 排他性  是否独占
-             * param4 是否自动删除  随着最后一个消费者消费完毕消息以后是否把队列自动删除
-             * param5 携带附属参数
-             *
-             */
-            //5.准备消息内容
-            String message="hello fanout!";
-            //6.准备交换机
-            String exchangeName="fanout-exchange";
-            //7.定义路由key
-            String roteKey="";
-            //8.指定交换机类型
-            String type="fanout";
-            //6.发送消息给队列queue
-            channel.basicPublish(exchangeName,roteKey,null,message.getBytes());
-            System.out.println("消息发送成功");
+            String queueName="queue8";
+
+            //6.接收消息
+            channel.basicConsume(queueName, true, new DeliverCallback() {
+                @Override
+                public void handle(String s, Delivery message) throws IOException {
+                    System.out.println("WORK1收到消息是：" + new String(message.getBody(), "UTF-8"));
+                }
+            }, new CancelCallback() {
+                @Override
+                public void handle(String s) throws IOException {
+                    System.out.println("接收失败了！");
+                }
+            });
+            System.out.println("开始接收消息！");
+            System.in.read();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -71,5 +69,6 @@ public class Producer {
         }
         //7.关闭连接
         //8.关闭通道
+
     }
 }
