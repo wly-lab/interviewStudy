@@ -24,7 +24,9 @@ public class RabbitMqConfiguration {
     @Bean
     public Queue emailQueue(){
         return new Queue("email.fanout.queue",true);
-    }    @Bean
+    }
+
+    @Bean
     public Queue duanxinQueue(){
         return new Queue("duanxin.fanout.queue",true);
     }

@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  rabbitmq:
+    username: wly
+    password: wly
+    virtual-host: /
+    host: 47.94.130.75
+    port: 5672
+#配置rabbitmq服务

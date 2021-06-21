@@ -16,5 +16,14 @@ class SpringbootOrderRabbitmqProducerApplicationTests {
         orderService.makeOrder("1","1",12);
     }
 
+    @Test
+    void contextLoads2() {
+        orderService.makeOrderDirect("1","1",12);
+    }
+
+    @Test
+    void contextLoads3() {
+        orderService.makeOrderTopic("1","1",12);
+    }
 
 }
