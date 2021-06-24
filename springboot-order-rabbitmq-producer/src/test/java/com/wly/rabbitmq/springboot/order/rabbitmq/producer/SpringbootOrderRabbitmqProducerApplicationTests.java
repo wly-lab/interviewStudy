@@ -26,4 +26,13 @@ class SpringbootOrderRabbitmqProducerApplicationTests {
         orderService.makeOrderTopic("1","1",12);
     }
 
+    @Test
+    void contextLoadsttl() {
+        orderService.makeOrderTTL("1","1",12);
+    }
+
+    @Test
+    void contextLoadsttlMessage() {
+        orderService.makeOrderTTLMessage("1","1",12);
+    }
 }
