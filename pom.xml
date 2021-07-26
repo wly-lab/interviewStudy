@@ -13,7 +13,11 @@
         <module>springboot-order-rabbitmq-consumer</module>
         <module>springboot-order-rabbitmq-producer</module>
         <module>studycode</module>
-
+        <module>dubbo-gmall-interface</module>
+        <module>dubbo-order-service-consumer</module>
+        <module>dubbo-user-service-provider</module>
+        <module>dubbo-boot-user-service-provider</module>
+        <module>dubbo-boot-order-service-cnosumer</module>
     </modules>
 
     <name>studyself</name>
