@@ -12,11 +12,12 @@ import java.util.List;
 public class OrderServiceImpl implements IOrderService {
     @Autowired
     IUserService userService;
-    public void initOrder(String userId) {
+    public List<UserAddress> initOrder(String userId) {
         System.out.println("userId:"+userId);
         List<UserAddress> addresslist=userService.getUserAddressList(userId);
         for (UserAddress address:addresslist) {
             System.out.println(address.getUserAddress());
         }
+        return addresslist;
     }
 }
