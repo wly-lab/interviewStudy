@@ -3,13 +3,13 @@ package com.wly.jucandjvm;
 @FunctionalInterface
 interface  Foo{
     //public void sayHello();
-    public int add(int x,int y);
+    public int add(int x, int y);
 
-    default  int mul(int x,int y){
+    default  int mul(int x, int y){
         return x*y;
     }
 
-    public static int div(int x,int y){
+    public static int div(int x, int y){
         return x/y;
     }
 }
